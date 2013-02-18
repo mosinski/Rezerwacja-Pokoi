@@ -1,0 +1,5 @@
+
+
+<br />
+
+<%= link_to 'New Website', new_website_path %>

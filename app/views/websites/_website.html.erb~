@@ -1,0 +1,7 @@
+
+<tr>
+<td background="https://raw.github.com/mosinski/Rezerwacja-Pokoi/master/app/assets/images/menu.gif" width="9"></td>
+<td style="padding-left: 5px; background-color: rgb(240, 240, 240);" onmouseover="onColor(this);" onmouseout="offColor(this)" bgcolor="#F0F0F0" height="30">
+
+<%= link_to website.tytul, website %>
+</td>
