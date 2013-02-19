@@ -3,6 +3,7 @@ class WebsitesController < ApplicationController
   # GET /websites.json
   def index
     @websites = Website.all
+    @website = Website.find(:first)
 
     respond_to do |format|
       format.html # index.html.erb

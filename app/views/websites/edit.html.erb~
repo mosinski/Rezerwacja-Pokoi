@@ -1,0 +1,8 @@
+<h1>Edycja Strony</h1>
+<%= form_for(@website) do |f| %>
+<%= render partial: 'form', locals: { f: f } %>
+  <div class="actions">
+    <%= f.submit :value => "Aktualizuj Strone" %><%= button_tag "Powrót",:type => 'button',:class => 'button',:onclick => "location.href = '#{articles_path}'" %>
+  </div>
+<% end %>
+

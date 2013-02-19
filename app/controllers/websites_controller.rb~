@@ -2,7 +2,7 @@ class WebsitesController < ApplicationController
   # GET /websites
   # GET /websites.json
   def index
-    @websites = Website.all
+    @websites = Website.find(:first)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,6 +13,7 @@ class WebsitesController < ApplicationController
   # GET /websites/1
   # GET /websites/1.json
   def show
+    @websites = Website.all
     @website = Website.find(params[:id])
 
     respond_to do |format|
@@ -24,6 +25,7 @@ class WebsitesController < ApplicationController
   # GET /websites/new
   # GET /websites/new.json
   def new
+    @websites = Website.all
     @website = Website.new
 
     respond_to do |format|
@@ -34,6 +36,7 @@ class WebsitesController < ApplicationController
 
   # GET /websites/1/edit
   def edit
+    @websites = Website.all
     @website = Website.find(params[:id])
   end
 

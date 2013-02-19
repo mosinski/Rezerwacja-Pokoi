@@ -43,6 +43,3 @@ P {
 .tab {
 	COLOR: #666699; FONT-FAMILY: Arial, Helvetica, sans-serif; FONT-SIZE: 10px; MARGIN-BOTTOM: 3px; MARGIN-TOP: 0px; PADDING-BOTTOM: 3px; PADDING-TOP: 0px; TEXT-ALIGN: center; TEXT-TRANSFORM: uppercase
 }
-.website_text_area{
-width:100%;
-}

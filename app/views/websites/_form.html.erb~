@@ -1,3 +1,4 @@
+<%= form_for(@website) do |f| %>
   <% if @website.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@website.errors.count, "error") %> prohibited this website from being saved:</h2>
@@ -18,3 +19,7 @@
     <%= f.label :kod_strony %><br />
     <%= f.text_area :kod_strony, :class => "website_text_area"%>
   </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
