@@ -1,21 +1,17 @@
-<h1>Listing images</h1>
-
 <table>
   <tr>
-    <th>Nazwa</th>
-    <th>Opis</th>
     <th></th>
+    <th>Nazwa</th>
     <th></th>
     <th></th>
   </tr>
 
 <% @images.each do |image| %>
   <tr>
-    <td><%= image_tag "http://m1l05z.pl/marek/"+image.nazwa.to_s, :height =>"70px" %></td>
-    <td><%= image.nazwa %></td>
-    <td><%= link_to 'Show', image %></td>
-    <td><%= link_to 'Edit', edit_image_path(image) %></td>
-    <td><%= link_to 'Destroy', image, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= image_tag "http://m1l05z.pl/marek/"+image.nazwa.to_s, "style" =>"height:70px", :class => "img-rounded" %></td>
+    <td><center><%= image.nazwa %></center></td>
+    <td><%= link_to 'Edytuj', edit_image_path(image) %> |</td>
+    <td><%= link_to 'Usuń', image, confirm: "Czy napewno chcesz usunąć zdjęcie '#{image.nazwa}'?", method: :delete %></td>
   </tr>
 <% end %>
 </table>
