@@ -12,9 +12,15 @@
            <div class="carousel-inner">
 	<% @images.each do |image| %>
 		<% if licznik == 0 %>
-   <div class="active item" data-slide-number="<%= licznik.to_s %>"><center><img style="height:200px" src="http://m1l05z.pl/marek/<%= image.nazwa %>"/></center></div>
+   <div class="active item" data-slide-number="<%= licznik.to_s %>"><center><img style="height:350px" src="http://m1l05z.pl/marek/<%= image.nazwa %>"/></center>
+<div class="carousel-caption">
+                      <p><%= image.opis %></p>
+                    </div></div>
 		<% else %>
-        <div class="item" data-slide-number="<%= licznik.to_s %>"><center><img style="height:200px" src="http://m1l05z.pl/marek/<%= image.nazwa %>" /></center></div>
+        <div class="item" data-slide-number="<%= licznik.to_s %>"><center><img style="height:350px" src="http://m1l05z.pl/marek/<%= image.nazwa %>" /></center>
+<div class="carousel-caption">
+                      <p><%= image.opis %></p>
+                    </div></div>
 		<% end %>
 		<% licznik += 1 %> 
 	<% end %>
@@ -23,6 +29,7 @@
 		<% if licznik == 1 %>
                 <a class="carousel-control left" href="#myCarousel" data-slide="prev">‹</a>
 		<% elsif licznik > 1 %>
+		<a class="carousel-control left" href="#myCarousel" data-slide="prev">‹</a>
                 <a class="carousel-control right" href="#myCarousel" data-slide="next">›</a>
 		<% else %>
 		<% end %>
@@ -32,7 +39,7 @@
      </div>
     </div> <!--/Slider-->
 <% @images.each do |image| %>
-<img style="height:140px"src="http://m1l05z.pl/marek/<%= image.nazwa %>" class="img-polaroid">
+<img style="height:113px"src="http://m1l05z.pl/marek/<%= image.nazwa %>" class="img-polaroid">
 <% end %>
 <br />
 <% else %>

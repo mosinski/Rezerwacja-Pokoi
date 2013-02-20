@@ -70,4 +70,8 @@ width:98%;
 .website_form_tytul{
 font-weight:bold;
 }
+.images_form_opis{
+width:98%;
+height:50px;
+}
 

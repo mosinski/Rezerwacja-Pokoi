@@ -11,7 +11,7 @@
 
 <% @images.each do |image| %>
   <tr>
-    <td><%= image_tag "http://m1l05z.pl/marek/"+image.nazwa.to_s, "style" =>"height:70px" %></td>
+    <td><%= image_tag "http://m1l05z.pl/marek/"+image.nazwa.to_s, :height =>"70px" %></td>
     <td><%= image.nazwa %></td>
     <td><%= link_to 'Show', image %></td>
     <td><%= link_to 'Edit', edit_image_path(image) %></td>
