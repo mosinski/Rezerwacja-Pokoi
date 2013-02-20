@@ -1,0 +1,6 @@
+<%= form_for(@image) do |f| %>
+<%= render partial: 'form', locals: { f: f } %>
+<div class="actions">
+    <%= f.submit :value => "Dodaj Zdjęcie" %><%= button_tag "Powrót",:type => 'button',:class => 'button',:onclick => "location.href = '#{websites_path}'" %>
+  </div>
+<% end %>

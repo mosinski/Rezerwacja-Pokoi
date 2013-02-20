@@ -14,6 +14,7 @@ class WebsitesController < ApplicationController
   # GET /websites/1
   # GET /websites/1.json
   def show
+    @images = Image.all
     @websites = Website.all
     @website = Website.find(params[:id])
 

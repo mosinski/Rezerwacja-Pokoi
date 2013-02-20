@@ -1,9 +1,48 @@
-<html><head>
+<html>
+<head>
 <meta http-equiv="content-type" content="text/html; charset=ISO-8859-2">
 <title>Pokoje gościnne Białogóra</title>
+<link href="/stylesheets/bootstrap.css" media="all" type="text/css" rel="stylesheet">
+<link href="/stylesheets/bootstrap-responsive.css" media="all" type="text/css" rel="stylesheet">
+<link href="/stylesheets/prettify.css" media="all" type="text/css" rel="stylesheet">
+<link href="/stylesheets/bootsnipp.css" media="all" type="text/css" rel="stylesheet">
+<link href="/stylesheets/codemirror.css" media="all" type="text/css" rel="stylesheet">
+<link href="/stylesheets/jackedup.css" media="all" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="/javascripts/azcarbon_2_1_0_HORIZ.js"></script>
+<script type="text/javascript" src="/javascripts/hn.js"></script>
+<script type="text/javascript" src="/javascripts/jquery-1.js"></script>
+<script type="text/javascript" src="/javascripts/bootstrap.js"></script>
+<script type="text/javascript" src="/javascripts/prettify.js"></script>
+<script type="text/javascript" src="/javascripts/codemirror.js"></script>
+<script type="text/javascript" src="/javascripts/humane.js"></script>
+
   <%= javascript_include_tag "application" %>
   <%= stylesheet_link_tag "application" %>
-</head><body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0" bgcolor="#FFFFFF"><center>
+<script>
+  jQuery( function($) { 
+        $('#myCarousel').carousel({
+                interval: 7000
+        });
+
+        $('#carousel-text').html($('#slide-content-0').html());
+
+        //Handles the carousel thumbnails
+        $('[id^=carousel-selector-]').click( function(){
+                var id_selector = $(this).attr("id");
+                var id = id_selector.substr(id_selector.length -1);
+                var id = parseInt(id);
+                $('#myCarousel').carousel(id);
+        });
+
+        // When the carousel slides, auto update the text
+        $('#myCarousel').on('slid', function (e) {
+                var id = $('.item.active').data('slide-number');
+                $('#carousel-text').html($('#slide-content-'+id).html());
+        });
+});
+</script>
+</head>
+<body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0" bgcolor="#FFFFFF"><center>
 <script language="javascript">
  function onColor(blah)
  {
@@ -28,7 +67,7 @@
   <tbody><tr><td bgcolor="silver" height="1"></td></tr>
   
   <tr><td background="https://raw.github.com/mosinski/Rezerwacja-Pokoi/master/app/assets/images/tlo.gif" height="25">&nbsp;<font color="#FFFFFF">Wczasy nad morzem MARIA &amp; JANUSZ SZYSKA </font>
-<font style="float:right;margin-bottom:-6px;margin-top:-6px;"><%= button_tag "Dodaj Strone",:type => 'button',:class => 'button',:onclick => "location.href = '#{new_website_path}'" %></font></td></tr></tbody></table>
+<font style="float:right;margin-bottom:-6px;margin-top:-6px;"><%= button_tag "Dodaj Zdjęcie",:type => 'button',:class => 'button',:onclick => "location.href = '#{new_image_path}'" %><%= button_tag "Dodaj Strone",:type => 'button',:class => 'button',:onclick => "location.href = '#{new_website_path}'" %></font></td></tr></tbody></table>
   
   <table border="0" cellpadding="0" cellspacing="0" width="700">
   <tbody><tr><td bgcolor="#F0F0F0" height="9" valign="top" width="150">

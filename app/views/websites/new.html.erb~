@@ -1,5 +1,7 @@
-<h1>Nowa Strona</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Powrót', websites_path %>
+<title>Nowa Strona</title>
+<%= form_for(@website) do |f| %>
+<%= render partial: 'form', locals: { f: f } %>
+  <div class="actions">
+    <%= f.submit :value => "Dodaj Strone" %><%= button_tag "Powrót",:type => 'button',:class => 'button',:onclick => "location.href = '#{websites_path}'" %>
+  </div>
+<% end %>

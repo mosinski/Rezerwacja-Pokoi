@@ -11,10 +11,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :tytul %><br />
-    <%= f.text_field :tytul %>
+    <center>
+    <%= f.label :tytul_strony, :class => "website_form_tytul" %>
+    <%= f.text_field :tytul, :class => "website_form_tytul_input" %>
+   </center>
   </div>
   <div class="field">
-    <%= f.label :kod_strony %><br />
+    <b><%= f.label :kod_strony_html %></b>
     <%= f.text_area :kod_strony, :class => "website_text_area"%>
   </div>

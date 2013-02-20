@@ -1,4 +1,6 @@
 PokojeBialogora::Application.routes.draw do
+  resources :images
+
   resources :websites
 
   # The priority is based upon order of creation:
