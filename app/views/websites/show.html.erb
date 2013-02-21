@@ -10,20 +10,28 @@
          <div id="myCarousel" class="carousel slide">
            <!-- Carousel items -->
            <div class="carousel-inner">
-	<% @images.each do |image| %>
+<% @images.each do |image| %>
 		<% if licznik == 0 %>
-   <div class="active item" data-slide-number="<%= licznik.to_s %>"><center><img style="height:350px" src="http://m1l05z.pl/marek/<%= image.nazwa %>"/></center>
-<div class="carousel-caption">
+	<div class="active item" data-slide-number="<%= licznik.to_s %>">
+	   <center>
+	     <img style="height:350px" src="http://m1l05z.pl/marek/<%= image.nazwa %>"/>
+	   </center>
+		<div class="carousel-caption">
                       <p><%= image.opis %></p>
-                    </div></div>
+                 </div>
+	</div>
 		<% else %>
-        <div class="item" data-slide-number="<%= licznik.to_s %>"><center><img style="height:350px" src="http://m1l05z.pl/marek/<%= image.nazwa %>" /></center>
-<div class="carousel-caption">
+        <div class="item" data-slide-number="<%= licznik.to_s %>">
+	   <center>
+	     <img style="height:350px" src="http://m1l05z.pl/marek/<%= image.nazwa %>" />
+	   </center>
+		<div class="carousel-caption">
                       <p><%= image.opis %></p>
-                    </div></div>
+                </div>
+	</div>
 		<% end %>
-		<% licznik += 1 %> 
-	<% end %>
+<% licznik += 1 %> 
+<% end %>
            </div>
                 <!-- Carousel nav -->
 		<% if licznik == 1 %>
@@ -38,10 +46,16 @@
       </div>
      </div>
     </div> <!--/Slider-->
+
 <% @images.each do |image| %>
-<img style="height:113px"src="http://m1l05z.pl/marek/<%= image.nazwa %>" class="img-polaroid">
+
+<a class="fancybox-effects-b" href="http://m1l05z.pl/marek/<%= image.nazwa %>" title="<%= image.opis %>">
+   <img style="height:113px"src="http://m1l05z.pl/marek/<%= image.nazwa %>" class="img-polaroid"" />
+</a>
+
 <% end %>
 <br />
+
 <%= link_to 'Lista Zdjęć', images_path %> | <%= link_to 'Usuń', @website, confirm: "Czy napewno chcesz usunąć strone '#{@website.tytul}'?", method: :delete %>
 <% else %>
 <%= @website.kod_strony.html_safe %>

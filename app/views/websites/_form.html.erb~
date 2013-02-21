@@ -1,4 +1,5 @@
-  <% if @website.errors.any? %>
+<a href="http://ckeditor.com/demo#full">Edytor HTML </a>
+ <% if @website.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@website.errors.count, "error") %> prohibited this website from being saved:</h2>
 
@@ -13,7 +14,7 @@
   <div class="field">
     <center>
     <%= f.label :tytul_strony, :class => "website_form_tytul" %>
-    <%= f.text_field :tytul , :class => "website_form_tytul_input" %>
+    <%= f.text_field :tytul, :class => "website_form_tytul_input" %>
    </center>
   </div>
   <div class="field">
