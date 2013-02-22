@@ -64,7 +64,7 @@ class ImagesController < ApplicationController
 
     respond_to do |format|
       if @image.update_attributes(params[:image])
-        format.html { redirect_to @image, notice: 'Zdjecie uaktualnione' }
+        format.html { redirect_to websites_path, notice: 'Zdjecie uaktualnione' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
