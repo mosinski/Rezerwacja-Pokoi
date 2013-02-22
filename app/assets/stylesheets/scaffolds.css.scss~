@@ -68,8 +68,20 @@ width:98%;
     min-height: 1px;
     margin-left: 0px;
 }
-.website_form_tytul{
+.website_form_tytul,#pozycja_label,#kod_strony_label{
 font-weight:bold;
+}
+.form_pozycja{
+display:block;
+float:right;
+margin-top:-66px;
+margin-right:2px;
+}
+#website_pozycja{
+width:70px;
+}
+#website_tytul{
+height:30px;
 }
 .images_form_opis{
 width:98%;
@@ -84,7 +96,7 @@ height:50px;
     background: none repeat scroll 0% 0% rgba(0, 0, 0, 0.75);
 }
 .img-polaroid{
-margin-bottom:2px;
+margin-bottom:3px;
 }
 .img-polaroid:hover{
 border-color: rgb(0, 136, 204);

@@ -1,4 +1,4 @@
-<a href="http://ckeditor.com/demo#full">Edytor HTML </a>
+<a href="http://ckeditor.com/demo#full" target="blank">Edytor HTML </a>
  <% if @website.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@website.errors.count, "error") %> prohibited this website from being saved:</h2>
@@ -17,7 +17,11 @@
     <%= f.text_field :tytul, :class => "website_form_tytul_input" %>
    </center>
   </div>
+  <div class="form_pozycja">
+  <%= f.label :pozycja_w_kategoriach, :id => "pozycja_label" %>
+  <center><%= f.select(:pozycja, options_for_select((1..@websites.count+1),@website.pozycja.to_i)) %></center>
+  </div>
   <div class="field">
-    <b><%= f.label :kod_strony_html %></b>
+    <b><%= f.label :kod_strony_html, :id => "kod_strony_label" %></b>
     <%= f.text_area :kod_strony, :class => "website_text_area"%>
   </div>

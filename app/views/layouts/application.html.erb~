@@ -39,20 +39,20 @@
  }
 </script>
 <script type="text/javascript">
-		$(document).ready(function() {
-			$('.fancybox').fancybox();
+ $(document).ready(function() {
+	$('.fancybox').fancybox();
 
-			$(".fancybox-effects-b").fancybox({
-				openEffect  : 'none',
-				closeEffect	: 'none',
+	$(".fancybox-effects-b").fancybox({
+		openEffect  : 'none',
+		closeEffect	: 'none',
 
-				helpers : {
-					title : {
-						type : 'over'
-					}
+		helpers : {
+			title : {
+			type : 'over'
 				}
-			});
-		});
+			}
+	});
+});
 </script>
 <img src="https://raw.github.com/mosinski/Rezerwacja-Pokoi/master/app/assets/images/logo.jpg" align="top">
 
@@ -68,7 +68,7 @@
 <table bgcolor="silver" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
 <tbody>
 
-<%= render :partial => "websites/website", :collection => @websites %>
+<%= render :partial => "websites/website", :collection => @websites.sort_by(&:pozycja) %>
 
 <tr><td bgcolor="#EFEFEF"></td><td bgcolor="#EFEFEF"></td></tr>
 </tbody>

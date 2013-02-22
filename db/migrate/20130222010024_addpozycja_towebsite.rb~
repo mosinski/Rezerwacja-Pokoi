@@ -1,0 +1,14 @@
+class AddpozycjaTowebsite < ActiveRecord::Migration
+  def up
+  end
+
+  def down
+  end
+  def self.up
+    add_column :websites, :pozycja, :string
+  end
+ 
+  def self.down
+    remove_column :websites, :pozycja
+  end
+end

@@ -1,3 +1,3 @@
 class Website < ActiveRecord::Base
-  attr_accessible :kod_strony, :tytul
+  attr_accessible :kod_strony, :tytul, :pozycja
 end
