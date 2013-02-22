@@ -75,7 +75,7 @@ font-weight:bold;
 display:block;
 float:right;
 margin-top:-66px;
-margin-right:2px;
+margin-right:3px;
 }
 #website_pozycja{
 width:70px;
