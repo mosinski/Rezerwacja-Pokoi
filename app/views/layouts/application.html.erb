@@ -79,13 +79,13 @@
  <% if current_user %>
 <%= button_tag "Profil",:type => 'button',:class => 'button',:onclick => "location.href = '#{edit_user_path(current_user.id)}'" %>
 <%= button_tag "Wyloguj",:type => 'button',:class => 'button',:onclick => "location.href = '#{root_url+'logout'}'" %>
+<% if current_user.username == "Administrator"%>
+	<%= button_tag "Dodaj Zdjęcie",:type => 'button',:class => 'button',:onclick => "location.href = '#{new_image_path}'" %>
+	<%= button_tag "Dodaj Strone",:type => 'button',:class => 'button',:onclick => "location.href = '#{new_website_path}'" %>
+	<% end %>
 <% else %>
 <%= button_tag "Logowanie",:type => 'button',:class => 'button',:onclick => "location.href = '#{root_url+'login'}'" %>
 <%= button_tag "Rejestracja",:type => 'button',:class => 'button',:onclick => "location.href = '#{new_user_path}'" %>
-<% end %>
-<% if current_user == "Administrator"%>
-<%= button_tag "Dodaj Zdjęcie",:type => 'button',:class => 'button',:onclick => "location.href = '#{new_image_path}'" %>
-<%= button_tag "Dodaj Strone",:type => 'button',:class => 'button',:onclick => "location.href = '#{new_website_path}'" %>
 <% end %>
 </font></td></tr></tbody></table>
   
