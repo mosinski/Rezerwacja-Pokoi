@@ -49,14 +49,15 @@
 
 <% @images.each do |image| %>
 
-<a class="fancybox-effects-b" href="http://m1l05z.pl/marek/<%= image.nazwa %>" title="<%= image.nazwa %>">
+<a class="fancybox-effects-b" href="http://m1l05z.pl/marek/<%= image.nazwa %>" title="<%= image.opis %>">
    <img style="height:113px"src="http://m1l05z.pl/marek/<%= image.nazwa %>" class="img-polaroid"" />
 </a>
 
 <% end %>
 <br />
-
-<%= link_to 'Lista Zdjęć', images_path %> | <%= link_to 'Usuń', @website, confirm: "Czy napewno chcesz usunąć strone '#{@website.tytul}'?", method: :delete %>
+<% if current_user && current_user.username == "Administrator"%>
+<%= link_to 'Lista Zdjęć', images_path %> | <%= link_to 'Edytuj', edit_website_path(@website) %> | <%= link_to 'Usuń', @website, confirm: "Czy napewno chcesz usunąć strone '#{@website.tytul}'?", method: :delete %>
+<% end %>
 <% else %>
 <%= @website.kod_strony.html_safe %>
 <br><br>
@@ -73,5 +74,7 @@ kontakt tel.(58)6735001/ 608191444<br>
 </p></td></tr></tbody></table>
 <hr height="1" color="black" noshade="" size="1" width="97%">
 <br>
+<% if current_user == "Administrator"%>
 <%= link_to 'Edytuj', edit_website_path(@website) %> | <%= link_to 'Usuń', @website, confirm: "Czy napewno chcesz usunąć strone '#{@website.tytul}'?", method: :delete %>
+<% end %>
 <% end %>

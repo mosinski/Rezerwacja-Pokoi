@@ -2,6 +2,8 @@ class ImagesController < ApplicationController
   # GET /images
   # GET /images.json
   def index
+   if current_user
+       if (current_user.username == 'Administrator')
     @websites = Website.all
     @images = Image.all
 
@@ -9,11 +11,19 @@ class ImagesController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @images }
     end
+	else
+  	redirect_to websites_path, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
+  	end
+    else
+        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+    end
   end
 
   # GET /images/1
   # GET /images/1.json
   def show
+   if current_user
+       if (current_user.username == 'Administrator')
     @websites = Website.all
     @image = Image.find(params[:id])
 
@@ -21,11 +31,19 @@ class ImagesController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @image }
     end
+	else
+  	redirect_to websites_path, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
+  	end
+    else
+        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+    end
   end
 
   # GET /images/new
   # GET /images/new.json
   def new
+   if current_user
+       if (current_user.username == 'Administrator')
     @websites = Website.all
     @image = Image.new
 
@@ -33,17 +51,33 @@ class ImagesController < ApplicationController
       format.html # new.html.erb
       format.json { render json: @image }
     end
+			else
+  	redirect_to websites_path, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
+  	end
+    else
+        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+    end
   end
 
   # GET /images/1/edit
   def edit
+   if current_user
+       if (current_user.username == 'Administrator')
     @websites = Website.all
     @image = Image.find(params[:id])
+	else
+  	redirect_to websites_path, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
+  	end
+    else
+        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+    end
   end
 
   # POST /images
   # POST /images.json
   def create
+   if current_user
+       if (current_user.username == 'Administrator')
     @image = Image.new(params[:image])
 
     respond_to do |format|
@@ -55,27 +89,43 @@ class ImagesController < ApplicationController
         format.json { render json: @image.errors, status: :unprocessable_entity }
       end
     end
+	else
+  	redirect_to websites_path, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
+  	end
+    else
+        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+    end
   end
 
   # PUT /images/1
   # PUT /images/1.json
   def update
+   if current_user
+       if (current_user.username == 'Administrator')
     @image = Image.find(params[:id])
 
     respond_to do |format|
       if @image.update_attributes(params[:image])
-        format.html { redirect_to @image, notice: 'Zdjecie uaktualnione' }
+        format.html { redirect_to websites_path, notice: 'Zdjecie uaktualnione' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
         format.json { render json: @image.errors, status: :unprocessable_entity }
       end
     end
+	else
+  	redirect_to websites_path, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
+  	end
+    else
+        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+    end
   end
 
   # DELETE /images/1
   # DELETE /images/1.json
   def destroy
+   if current_user
+       if (current_user.username == 'Administrator')
     @image = Image.find(params[:id])
     @image.destroy
 

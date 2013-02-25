@@ -80,7 +80,7 @@ margin-right:3px;
 #website_pozycja{
 width:70px;
 }
-#website_tytul{
+#website_tytul,#image_nazwa,#user_session_username,#user_session_password,#user_username,#user_email,#user_password,#user_password_confirmation{
 height:30px;
 }
 .images_form_opis{
@@ -101,3 +101,9 @@ margin-bottom:3px;
 .img-polaroid:hover{
 border-color: rgb(0, 136, 204);
 }
+.notice {
+    position: fixed;
+    top: 26px;
+    left: 42%;
+}
+

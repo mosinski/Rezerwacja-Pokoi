@@ -1,0 +1,23 @@
+  <% if @user_session.errors.any? %>
+    <div id="error_explanation">
+      <% if  (@user_session.errors.count)==1  %>
+        <h2 style="color: rgb(185, 74, 72);">Logowanie nie powiodło się z powodu jednego błędu</h2>
+      <% elsif (@user_session.errors.count)>1 %>
+        <h2 style="color: rgb(185, 74, 72);">Logowanie nie powiodło się z powodu jednego błędu <%= @user_session.errors.count %> błędów</h2>
+      <% end %>
+      <ul>
+      <% @user_session.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field" style="display:inline-block;margin:10px 5px 0px 10px;">
+    <%= f.label :nazwa_użytkownika, "Nazwa Użytkownika" %>
+    <%= f.text_field :username %>
+  </div>
+  <div class="field" style="display:inline-block">
+    <%= f.label :hasło %>
+    <%= f:password :password %>
+  </div>

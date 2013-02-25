@@ -144,11 +144,6 @@ en:
         username:              'Nazwa Użytkownika'
         email:                 'E-mail'
         remember_me:           'zapamiętaj mnie'
-      user_session:
-        login:		       'Nazwa użytkownika'
-        email:		       'E-mail'
-        password:	       'Hasło'
-        remember_me:           'Pamiętaj mnie'
     errors:
       <<: *errors
 

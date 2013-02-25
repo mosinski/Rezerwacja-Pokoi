@@ -14,7 +14,7 @@ class WebsitesController < ApplicationController
   # GET /websites/1
   # GET /websites/1.json
   def show
-    @images = Image.all
+    @images = Image.all.sort_by(&:created_at).reverse
     @websites = Website.all
     @website = Website.find(params[:id])
 
@@ -27,6 +27,8 @@ class WebsitesController < ApplicationController
   # GET /websites/new
   # GET /websites/new.json
   def new
+   if current_user
+       if (current_user.username == 'Administrator')
     @websites = Website.all
     @website = Website.new
 
@@ -34,17 +36,33 @@ class WebsitesController < ApplicationController
       format.html # new.html.erb
       format.json { render json: @website }
     end
+	else
+  	redirect_to websites_path, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
+  	end
+    else
+        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+    end
   end
 
   # GET /websites/1/edit
   def edit
+   if current_user
+       if (current_user.username == 'Administrator')
     @websites = Website.all
     @website = Website.find(params[:id])
+	else
+  	redirect_to websites_path, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
+  	end
+    else
+        redirect_to :login, :notice => 'Informacja!<br>Zaloguj si&#281; aby obejrze&#263;!'
+    end
   end
 
   # POST /websites
   # POST /websites.json
   def create
+   if current_user
+       if (current_user.username == 'Administrator')
     @website = Website.new(params[:website])
 
     respond_to do |format|
@@ -56,11 +74,19 @@ class WebsitesController < ApplicationController
         format.json { render json: @website.errors, status: :unprocessable_entity }
       end
     end
+	else
+  	redirect_to websites_path, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
+  	end
+    else
+        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+    end
   end
 
   # PUT /websites/1
   # PUT /websites/1.json
   def update
+   if current_user
+       if (current_user.username == 'Administrator')
     @website = Website.find(params[:id])
 
     respond_to do |format|
@@ -72,17 +98,31 @@ class WebsitesController < ApplicationController
         format.json { render json: @website.errors, status: :unprocessable_entity }
       end
     end
+	else
+  	redirect_to websites_path, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
+  	end
+    else
+        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+    end
   end
 
   # DELETE /websites/1
   # DELETE /websites/1.json
   def destroy
+   if current_user
+       if (current_user.username == 'Administrator')
     @website = Website.find(params[:id])
     @website.destroy
 
     respond_to do |format|
       format.html { redirect_to websites_url }
       format.json { head :no_content }
+    end
+	else
+  	redirect_to websites_path, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
+  	end
+    else
+        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
     end
   end
 end

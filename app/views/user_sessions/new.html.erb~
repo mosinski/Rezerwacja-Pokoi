@@ -1,0 +1,7 @@
+<%= form_for(@user_session) do |f| %>
+<%= render partial: 'form', locals: { f: f } %>
+
+  <div class="actions">
+    <%= f.submit :value => 'Zaloguj' %><%= button_tag "Powrót",:type => 'button',:class => 'button',:onclick => "location.href = '#{websites_url}'" %>
+  </div>
+<% end %>

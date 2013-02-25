@@ -23,7 +23,22 @@
   <%= javascript_include_tag "application" %>
   <%= stylesheet_link_tag "application" %>
 </head>
-<body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0" bgcolor="#FFFFFF"><center>
+<body leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0" bgcolor="#FFFFFF">
+<% if notice %>
+<div class="notice">
+<% if notice.match(/Uwaga!/) %>
+<div class="alert alert-error">
+<% elsif notice.match(/Gratulacje!/) %>
+<div class="alert alert-success">
+<% elsif notice.match(/Informacja!/) %>
+<div class="alert alert-info">
+<% end %>
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong><%= notice.html_safe %></strong>
+</div>
+</div>
+<% end %>
+<center>
 <script language="javascript">
  function onColor(blah)
  {
@@ -60,7 +75,19 @@
   <tbody><tr><td bgcolor="silver" height="1"></td></tr>
   
   <tr><td background="https://raw.github.com/mosinski/Rezerwacja-Pokoi/master/app/assets/images/tlo.gif" height="25">&nbsp;<font color="#FFFFFF">Wczasy nad morzem MARIA &amp; JANUSZ SZYSKA </font>
-<font style="float:right;margin-bottom:-6px;margin-top:-6px;"><%= button_tag "Dodaj Zdjęcie",:type => 'button',:class => 'button',:onclick => "location.href = '#{new_image_path}'" %><%= button_tag "Dodaj Strone",:type => 'button',:class => 'button',:onclick => "location.href = '#{new_website_path}'" %></font></td></tr></tbody></table>
+<font style="float:right;margin-bottom:-6px;margin-top:-6px;">
+ <% if current_user %>
+<%= button_tag "Profil",:type => 'button',:class => 'button',:onclick => "location.href = '#{edit_user_path(current_user.id)}'" %>
+<%= button_tag "Wyloguj",:type => 'button',:class => 'button',:onclick => "location.href = '#{root_url+'logout'}'" %>
+<% else %>
+<%= button_tag "Logowanie",:type => 'button',:class => 'button',:onclick => "location.href = '#{root_url+'login'}'" %>
+<%= button_tag "Rejestracja",:type => 'button',:class => 'button',:onclick => "location.href = '#{new_user_path}'" %>
+<% end %>
+<% if current_user == "Administrator"%>
+<%= button_tag "Dodaj Zdjęcie",:type => 'button',:class => 'button',:onclick => "location.href = '#{new_image_path}'" %>
+<%= button_tag "Dodaj Strone",:type => 'button',:class => 'button',:onclick => "location.href = '#{new_website_path}'" %>
+<% end %>
+</font></td></tr></tbody></table>
   
   <table border="0" cellpadding="0" cellspacing="0" width="700">
   <tbody><tr><td bgcolor="#F0F0F0" height="9" valign="top" width="150">

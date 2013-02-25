@@ -1,0 +1,31 @@
+<% if @user.errors.any? %>
+    <div id="error_explanation">
+    <% if  (@user.errors.count)==1  %>
+      <h2 style="color: rgb(185, 74, 72);">Użytkownik nie został stworzony z powodu jednego błędu</h2>
+    <% elsif (@user.errors.count)>1 %>
+	<h2 style="color: rgb(185, 74, 72);">Użytkownik nie został stworzony z powodu <%= @user.errors.count %> błędów</h2>
+    <% end %>
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+<div class="field" style="display:inline-block;margin:10px 5px 0px 10px;">
+<%= f.label :username %>
+<%= f.text_field :username %>
+</div>
+<div class="field" style="display:inline-block">
+<%= f.label :email %>
+<%= f.text_field :email %>
+</div>
+<div class="field" style="display:inline-block">
+<%= f.label :password %>
+<%= f.password_field :password %>
+</div>
+<div class="field" style="display:inline-block">
+<%= f.label :password_confirmation %>
+<%= f.password_field :password_confirmation %>
+</div>
