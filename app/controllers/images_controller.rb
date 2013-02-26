@@ -80,7 +80,7 @@ require 'net/ftp'
    if current_user
        if (current_user.username == 'Administrator')
     		file = params[:file]
-		@images = Image.all.find_by_nazwa(file.original_filename)
+		@images = Image.find_all_by_nazwa(file.original_filename)
 
 		if @images == nil
     		  ftp = Net::FTP.new('s4.masternet.pl')
