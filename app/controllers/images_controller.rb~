@@ -94,7 +94,7 @@ require 'net/ftp'
         format.html { redirect_to websites_path, notice: 'Gratulacje! Dodano zdjecie do galeri' }
         format.json { render json: @image, status: :created, location: @image }
       else
-        format.html { render action: "new" }
+        format.html { redirect_to websites_path, notice: 'Uwaga! Niepowodznie dodania zdjecia' }
         format.json { render json: @image.errors, status: :unprocessable_entity }
       end
     end

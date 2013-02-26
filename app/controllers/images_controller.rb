@@ -82,7 +82,7 @@ require 'net/ftp'
     	file = params[:file]
     	ftp = Net::FTP.new('s4.masternet.pl')
         ftp.passive = true
-    	ftp.login(user = "m1l05z-marek", passwd = "marco12")
+    	ftp.login(user = ENV['ftp_login'], passwd = ENV['ftp_haslo'])
     	ftp.storbinary("STOR " + file.original_filename, StringIO.new(file.read), Net::FTP::DEFAULT_BLOCKSIZE)
     	ftp.quit()
         @image = Image.new
