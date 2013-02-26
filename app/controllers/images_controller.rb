@@ -1,4 +1,5 @@
 class ImagesController < ApplicationController
+require 'net/ftp'
   # GET /images
   # GET /images.json
   def index
@@ -78,14 +79,22 @@ class ImagesController < ApplicationController
   def create
    if current_user
        if (current_user.username == 'Administrator')
-    @image = Image.new(params[:image])
+    	file = params[:file]
+    	ftp = Net::FTP.new('s4.masternet.pl')
+        ftp.passive = true
+    	ftp.login(user = "m1l05z-marek", passwd = "marco12")
+    	ftp.storbinary("STOR " + file.original_filename, StringIO.new(file.read), Net::FTP::DEFAULT_BLOCKSIZE)
+    	ftp.quit()
+        @image = Image.new
+	@image.nazwa = file.original_filename
+        @image.opis = params[:opis]
 
     respond_to do |format|
       if @image.save
-        format.html { redirect_to websites_path, notice: 'Dodano zdjecie do galeri' }
+        format.html { redirect_to websites_path, notice: 'Gratulacje! Dodano zdjecie do galeri' }
         format.json { render json: @image, status: :created, location: @image }
       else
-        format.html { render action: "new" }
+        format.html { redirect_to websites_path, notice: 'Uwaga! Niepowodznie dodania zdjecia' }
         format.json { render json: @image.errors, status: :unprocessable_entity }
       end
     end

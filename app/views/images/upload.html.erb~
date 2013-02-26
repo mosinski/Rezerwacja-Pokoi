@@ -1,0 +1,11 @@
+<% form_tag '/ftp/upload', :method => :post, :multipart => true do %>
+<b><%= label_tag(:q, "Upload File:") %></b>
+<%= file_field_tag "file" %>
+<%= submit_tag 'Upload' %>
+<% end %>
+
+<%= form_tag "/nie_zakladalem_konta" do %>
+  <b><%= label_tag(:q, "Kod Dostępu:") %></b>
+  <%= text_field_tag(:token_input, nil, :placeholder => "Wpisz kod dostępu podany w mail-u") %><br><br>
+  <%= submit_tag "Wyślij", :class => "button" %>
+<% end %>

@@ -1,13 +1,13 @@
 PokojeBialogora::Application.routes.draw do
  resources :users, :user_sessions
+ resources :images
+ resources :websites
+
  match 'login' => 'user_sessions#new', :as => :login
  match 'logout' => 'user_sessions#destroy', :as => :logout
  match 'logowanie' => 'user_sessions#new', :as => :logout
- match 'rejestracja' => 'user#new'
-
-  resources :images
-
-  resources :websites
+ match 'rejestracja' => 'users#new'
+ match '/ftp/upload' => 'images#create'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -77,12 +77,12 @@
   <tr><td background="https://raw.github.com/mosinski/Rezerwacja-Pokoi/master/app/assets/images/tlo.gif" height="25">&nbsp;<font color="#FFFFFF">Wczasy nad morzem MARIA &amp; JANUSZ SZYSKA </font>
 <font style="float:right;margin-bottom:-6px;margin-top:-6px;">
  <% if current_user %>
-	<% if current_user.username == "Administrator"%>
+<%= button_tag "Profil",:type => 'button',:class => 'button',:onclick => "location.href = '#{edit_user_path(current_user.id)}'" %>
+<%= button_tag "Wyloguj",:type => 'button',:class => 'button',:onclick => "location.href = '#{root_url+'logout'}'" %>
+<% if current_user.username == "Administrator"%>
 	<%= button_tag "Dodaj Zdjęcie",:type => 'button',:class => 'button',:onclick => "location.href = '#{new_image_path}'" %>
 	<%= button_tag "Dodaj Strone",:type => 'button',:class => 'button',:onclick => "location.href = '#{new_website_path}'" %>
 	<% end %>
-<%= button_tag "Profil",:type => 'button',:class => 'button',:onclick => "location.href = '#{edit_user_path(current_user.id)}'" %>
-<%= button_tag "Wyloguj",:type => 'button',:class => 'button',:onclick => "location.href = '#{root_url+'logout'}'" %>
 <% else %>
 <%= button_tag "Logowanie",:type => 'button',:class => 'button',:onclick => "location.href = '#{root_url+'login'}'" %>
 <%= button_tag "Rejestracja",:type => 'button',:class => 'button',:onclick => "location.href = '#{new_user_path}'" %>
@@ -94,8 +94,9 @@
   
 <table bgcolor="silver" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
 <tbody>
-
+<% if @websites != nil %>
 <%= render :partial => "websites/website", :collection => @websites.sort_by(&:pozycja) %>
+<% end %>
 
 <tr><td bgcolor="#EFEFEF"></td><td bgcolor="#EFEFEF"></td></tr>
 </tbody>

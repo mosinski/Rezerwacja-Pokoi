@@ -1,6 +1,10 @@
-<%= form_for(@image) do |f| %>
-<%= render partial: 'form', locals: { f: f } %>
-<div class="actions">
-    <%= f.submit :value => "Dodaj Zdjęcie" %><%= button_tag "Powrót",:type => 'button',:class => 'button',:onclick => "location.href = '#{websites_path}'" %>
-  </div>
+<%= form_tag '/ftp/upload', :method => :post, :multipart => true do %>
+<center><b><%= label_tag(:q, "Wybierz zdjęcie:") %></b>
+<%= file_field_tag "file" %><br></center>
+<div class="field">
+    <%= label_tag :krótki_opis %>
+    <%= text_area_tag :opis,nil, :class => "images_form_opis" %>
+ </div>
+<%= submit_tag "Dodaj Zdjęcie" %>
+<%= button_tag "Powrót",:type => 'button',:class => 'button',:onclick => "location.href = '#{websites_path}'" %>
 <% end %>
