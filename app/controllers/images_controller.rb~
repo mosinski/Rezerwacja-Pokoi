@@ -80,9 +80,9 @@ require 'net/ftp'
    if current_user
        if (current_user.username == 'Administrator')
     		file = params[:file]
-		@images = Image.all.find_by_nazwa(file.original_filename)
+		@zdjecia = Image.find_all_by_nazwa(file.original_filename).count
 
-		if @images == nil
+		if (@zdjecia == 0)
     		  ftp = Net::FTP.new('s4.masternet.pl')
         	  ftp.passive = true
     		  ftp.login(user = ENV['ftp_login'], passwd = ENV['ftp_haslo'])

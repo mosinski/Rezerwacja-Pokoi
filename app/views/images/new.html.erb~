@@ -1,10 +1,16 @@
 <%= form_tag '/ftp/upload', :method => :post, :multipart => true do %>
 <center><b><%= label_tag(:q, "Wybierz zdjęcie:") %></b>
 <%= file_field_tag "file" %><br></center>
+<%= @zdjecia = Image.find_all_by_nazwa("borys1.jpg") %>
+<% if (Image.find_all_by_nazwa("borys1.jpg")) == nil %>
+nil
+<% else %>
+coś
+<% end %>
 <div class="field">
     <%= label_tag :krótki_opis %>
     <%= text_area_tag :opis,nil, :class => "images_form_opis" %>
-  </div>
+ </div>
 <%= submit_tag "Dodaj Zdjęcie" %>
 <%= button_tag "Powrót",:type => 'button',:class => 'button',:onclick => "location.href = '#{websites_path}'" %>
 <% end %>
