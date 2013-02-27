@@ -2,7 +2,7 @@
 <center><b><%= label_tag(:q, "Wybierz zdjęcie:") %></b>
 <%= file_field_tag "file" %><br></center>
 <%= @zdjecia = Image.find_all_by_nazwa("borys1.jpg") %>
-<% if (Image.find_all_by_nazwa("borys1.jpg")) == nil %>
+<% if (Image.find_all_by_nazwa("borys1.jpg")).count == 0 %>
 nil
 <% else %>
 coś
