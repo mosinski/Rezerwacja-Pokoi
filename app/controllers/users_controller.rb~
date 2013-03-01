@@ -43,7 +43,7 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
    if current_user
-    redirect_to websites_path, :notice => 'Informacja! Wyloguj si&#281; aby wykona&#263;'
+    redirect_to websites_path, :notice => 'Informacja! Wyloguj si&#281; aby dokona&#263; rejestracji'
    else
     @websites = Website.all
     @user = User.new

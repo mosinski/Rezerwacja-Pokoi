@@ -45,13 +45,7 @@ class UsersController < ApplicationController
    if current_user
     redirect_to websites_path, :notice => 'Informacja! Wyloguj si&#281; aby dokona&#263; rejestracji'
    else
-    @websites = Website.all
-    @user = User.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @user }
-    end
+    redirect_to websites_path, :notice => 'Informacja! Rejestracja zosta&#322;a wy&#322;&#261;czona'
    end
   end
 
@@ -72,18 +66,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
  def create
-    @websites = Website.all
-    @user = User.new(params[:user])
- 
-	respond_to do |format|
-		if @user.save
-		format.html { redirect_to(:websites, :notice => 'Gratulacje! U&#380;ytkownik zarejestrowany') }
-		format.xml { render :xml => @user, :status => :created, :location => @user }
-		else
-		format.html { render :action => "new" }
-		format.xml { render :xml => @user.errors, :status => :unprocessable_entity }
-		end
-	end
+   redirect_to websites_path, :notice => 'Informacja! Rejestracja zosta&#322;a wy&#322;&#261;czona'
 end
 
   # PUT /users/1
